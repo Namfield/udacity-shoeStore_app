@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.login.LoginFragment">
+
+    <!-- add loginViewModel to data binding -->
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.udacity.shoestore.login.LoginViewModel" />
+    </data>
+
+    <!--
+    Using Constraintlayout here because the design is fairly complex with
+    several viewgroups with different shapes and within in only a view group
+    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvEmailLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/etEmail"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter your email"
+            app:layout_constraintTop_toBottomOf="@id/tvEmailLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/tvPasswordLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            app:layout_constraintTop_toBottomOf="@id/etEmail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter your password"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@id/tvPasswordLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Log In"
+            app:layout_constraintTop_toBottomOf="@id/etPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp"
+            android:onClick="@{() -> loginViewModel.onNavigateToWelcome()}" />
+
+        <Button
+            android:id="@+id/btnCreateAccount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Create Account"
+            app:layout_constraintTop_toBottomOf="@id/btnLogin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="@{() -> loginViewModel.onNavigateToWelcome()}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

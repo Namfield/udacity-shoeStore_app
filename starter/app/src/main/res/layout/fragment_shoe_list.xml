@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.shoeList.ShoeListFragment">
+
+    <!-- add ViewModel to data binding -->
+    <data>
+        <variable
+            name="shoeViewModel"
+            type="com.udacity.shoestore.shoe.ShoeShareViewModel" />
+    </data>
+
+    <!--
+    Using Constraintlayout here because the design is fairly complex with
+    several viewgroups with different shapes and within in only a view group
+    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="45dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{()-> shoeViewModel.onNavigateToAddShoe()}"
+            android:src="@drawable/ic_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/textWelcomeScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_weight="10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/shoeListLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/emptyListTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="The shoe list is empty"
+                    android:visibility="gone" /> <!-- Initially hidden -->
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

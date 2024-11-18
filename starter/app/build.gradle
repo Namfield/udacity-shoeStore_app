@@ -10,6 +10,9 @@ plugins {
 android {
     namespace 'com.udacity.shoestore'
     compileSdk 33
+    buildFeatures {
+        dataBinding true
+    }
 
     defaultConfig {
         applicationId "com.udacity.shoestore"
@@ -27,15 +30,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    buildFeatures {
-        dataBinding true
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    sourceSets {
+        main {
+            java {
+                srcDirs 'src\\main\\java', 'src\\main\\java\\com\\udacity\\shoestore\\welcome', 'src\\main\\java\\com\\udacity\\shoestore\\login', 'src\\main\\java\\com\\udacity\\shoestore\\instruction', 'src\\main\\java\\com\\udacity\\shoestore\\shoeList', 'src\\main\\java\\com\\udacity\\shoestore\\shoe', 'src\\main\\java\\com\\udacity\\shoestore\\shoeDetail'
+            }
+            res {
+                srcDirs 'src\\main\\res', 'src\\main\\res\\animation', 'src\\main\\res\\anim'
+            }
+        }
     }
 }
 
@@ -46,6 +56,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "com.jakewharton.timber:timber:5.0.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
